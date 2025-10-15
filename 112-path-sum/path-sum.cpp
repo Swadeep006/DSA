@@ -12,20 +12,13 @@
 
 class Solution {
 public:
-    bool helper(TreeNode*root,int sum,int target){
-        if(root==NULL) return false;
-        sum += root->val;
-        if(root->left == NULL && root->right == NULL){
-            if(sum == target){
-                return true;
-            }else{
-                return false;
-            }
-        }
-        return helper(root->left,sum,target)||helper(root->right,sum,target);
-    }
-
     bool hasPathSum(TreeNode* root, int targetSum) {
-        return helper(root,0,targetSum);
+        if(!root) return false;
+        targetSum = targetSum-root->val;
+        if(root->left==NULL && root->right == NULL){
+            return targetSum == 0;
+        }
+        return hasPathSum(root->left,targetSum) || hasPathSum(root->right,targetSum);
+
     }
 };
