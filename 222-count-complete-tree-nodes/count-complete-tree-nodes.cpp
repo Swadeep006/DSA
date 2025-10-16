@@ -11,16 +11,9 @@
  */
 class Solution {
 public:
-    int helper(TreeNode* root, int count){
-        if(root== NULL) return 0;
-        count++;
-        if(root->left==NULL && root->right==NULL) {
-            return 1;
-        }
-        return 1+helper(root->left,count)+helper(root->right,count); 
-   
-    }
+
     int countNodes(TreeNode* root) {
-       return helper(root,0);
+       if(!root) return 0;
+       return 1+countNodes(root->left)+countNodes(root->right);
     }
 };
