@@ -18,10 +18,6 @@ public:
         path.push_back(root->val);
         target = target-root->val;
         if(!root->left && !root->right){
-                for(auto val : path){
-                    cout<<val<<" ";
-                }
-                cout<<endl;
             if(target==0){
                 paths.push_back(path);
             }
